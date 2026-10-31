@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám Phá Du Lịch An Giang - Vùng Đất Thất Sơn Kỳ Vĩ</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-color: #008844;
+            --primary-dark: #006633;
+            --accent-color: #ff9900;
+            --text-color: #333333;
+            --bg-light: #f4f9f5;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/R%C6%B0ng_tr%C3%A0m_Tr%C3%A0_S%C6%B0.jpg/1280px-R%C6%B0ng_tr%C3%A0m_Tr%C3%A0_S%C6%B0.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* --- DESTINATIONS --- */
+        .destinations {
+            background-color: var(--bg-light);
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #e0e0e0;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .card-body p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: #e6f4ea;
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* --- CUISINE --- */
+        .cuisine-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .cuisine-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .cuisine-img {
+            width: 40%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            background-color: #e0e0e0;
+        }
+
+        .cuisine-info {
+            width: 60%;
+        }
+
+        .cuisine-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1a252f;
+            color: var(--white);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 20px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .socials a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .cuisine-item, .cuisine-item:nth-child(even) { flex-direction: column; }
+            .cuisine-img, .cuisine-info { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-mountain-sun"></i> An Giang Travel
+            </a>
+            <ul class="nav-links">
+                <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                <li><a href="#dia-danh">Điểm đến</a></li>
+                <li><a href="#am-thuc">Ẩm thực</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Về Với Vùng Đất Thất Sơn Kỳ Vĩ</h1>
+            <p>Khám phá vẻ đẹp yên bình của Rừng tràm Trà Sư, sự thiêng liêng của Miếu Bà Chúa Xứ và nét văn hóa ẩm thực độc đáo của An Giang.</p>
+            <a href="#dia-danh" class="btn">Bắt Đầu Khám Phá</a>
+        </div>
+    </section>
+
+    <!-- GIOI THIEU SECTION -->
+    <section id="gioi-thieu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Về An Giang</h2>
+            </div>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #555;">
+                An Giang là một tỉnh thuộc vùng Đồng bằng sông Cửu Long, nơi hòa quyện nét đẹp văn hóa đa dạng của các dân tộc Kinh, Khmer, Chăm và Hoa. Không chỉ nổi tiếng với danh lam thắng cảnh thiên nhiên sông nước hữu tình, An Giang còn sở hữu hàng loạt điểm đến tâm linh và nét văn hóa ẩm thực độc đáo miền Tây.
+            </p>
+        </div>
+    </section>
+
+    <!-- DIA DANH SECTION -->
+    <section id="dia-danh" class="destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Điểm Đến Nổi Bật</h2>
+            </div>
+            <div class="grid-cards">
+
+                <!-- Card 1: Rừng Tràm Trà Sư -->
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/R%C6%B0ng_tr%C3%A0m_Tr%C3%A0_S%C6%B0.jpg/800px-R%C6%B0ng_tr%C3%A0m_Tr%C3%A0_S%C6%B0.jpg" 
+                         alt="Rừng Tràm Trà Sư" 
+                         class="card-img"
+                         onerror="this.src='https://picsum.photos/600/400?nature'">
+                    <div class="card-body">
+                        <h3>Rừng Tràm Trà Sư</h3>
+                        <p>Thảm bèo xanh mướt bao phủ mặt nước cùng hệ sinh thái động thực vật phong phú, điểm đến sinh thái nổi tiếng tại Tịnh Biên.</p>
+                        <span class="card-tag"><i class="fa-solid fa-tree"></i> Sinh Thái</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Núi Cấm -->
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/T%C6%B0%E1%BB%A3ng_Ph%E1%BA%ADt_Di_L%E1%BA%B7c_tr%C3%AAn_đ%E1%BB%89nh_N%C3%BAi_C%E1%BA%A5m.jpg/800px-T%C6%B0%E1%BB%A3ng_Ph%E1%BA%ADt_Di_L%E1%BA%B7c_tr%C3%AAn_đ%E1%BB%89nh_N%C3%BAi_C%E1%BA%A5m.jpg" 
+                         alt="Núi Cấm" 
+                         class="card-img"
+                         onerror="this.src='https://picsum.photos/600/400?mountain'">
+                    <div class="card-body">
+                        <h3>Núi Cấm (Thiên Cấm Sơn)</h3>
+                        <p>Ngọn núi cao nhất vùng Thất Sơn với khí hậu mát mẻ quanh năm, hồ Thủy Liêm thơ mộng và tượng Phật Di Lặc lớn bậc nhất.</p>
+                        <span class="card-tag"><i class="fa-solid fa-mountain"></i> Tâm Linh & Thiên Nhiên</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Miếu Bà Chúa Xứ -->
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Mieu_Ba_Chua_Xu_Nui_Sam.jpg/800px-Mieu_Ba_Chua_Xu_Nui_Sam.jpg" 
+                         alt="Miếu Bà Chúa Xứ" 
+                         class="card-img"
+                         onerror="this.src='https://picsum.photos/600/400?temple'">
+                    <div class="card-body">
+                        <h3>Miếu Bà Chúa Xứ Núi Sam</h3>
+                        <p>Trung tâm hành hương nổi tiếng tại Châu Đốc, thu hút hàng triệu du khách đến cầu may mắn, bình an mỗi năm.</p>
+                        <span class="card-tag"><i class="fa-solid fa-gopuram"></i> Tâm Linh</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- AM THUC SECTION -->
+    <section id="am-thuc">
+        <div class="container">
+            <div class="section-title">
+                <h2>Đặc Sản Ẩm Thực</h2>
+            </div>
+            
+            <!-- Ẩm thực 1: Bún Cá Châu Đốc -->
+            <div class="cuisine-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/B%C3%Ban_c%C3%A1_Ch%C3%A2u_%C4%90%E1%BB%91c.jpg/800px-B%C3%Ban_c%C3%A1_Ch%C3%A2u_%C4%90%E1%BB%91c.jpg" 
+                     alt="Bún Cá Châu Đốc" 
+                     class="cuisine-img"
+                     onerror="this.src='https://picsum.photos/600/400?food'">
+                <div class="cuisine-info">
+                    <h3>Bún Cá Châu Đốc</h3>
+                    <p>Món ăn mang hương vị đậm đà nhờ nước dùng từ nghệ tươi, ngải bún và mắm cá linh. Thưởng thức cùng cá lóc đồng chiên hoặc luộc và các loại rau đồng quê như bông điên điển, rau muống bào.</p>
+                </div>
+            </div>
+
+            <!-- Ẩm thực 2: Bánh Bò Thốt Nốt -->
+            <div class="cuisine-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/B%C3%A1nh_b%C3%B2_th%E1%BB%91t_n%E1%BB%91t.jpg/800px-B%C3%A1nh_b%C3%B2_th%E1%BB%91t_n%E1%BB%91t.jpg" 
+                     alt="Bánh Bò Thốt Nốt" 
+                     class="cuisine-img"
+                     onerror="this.src='https://picsum.photos/600/400?cake'">
+                <div class="cuisine-info">
+                    <h3>Bánh Bò Thốt Nốt</h3>
+                    <p>Món bánh truyền thống ngọt dịu thanh mát vị đường thốt nốt đặc sản An Giang, thơm béo vị nước cốt dừa và màu vàng tự nhiên mềm xốp đẹp mắt.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Du Lịch An Giang</h3>
+                <p>Khám phá nét đẹp thiên nhiên và con người Miền Tây Nam Bộ</p>
+                <div class="socials">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 An Giang Travel. Thiết kế cho GitHub Pages.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT SLOW SCROLL -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
